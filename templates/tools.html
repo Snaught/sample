@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description"
+        content="Sample store page">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- Bootstrap for carousel -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <title>Sample Store Page | Tools Page</title>
+
+    <link type="text/css" charset="UTF-8" rel="stylesheet" href="/static/main.css">
+    <link type="text/css" charset="UTF-8" rel="stylesheet" href="/static/carousel.css">
+    <script src="/static/style.js"></script>
+    <script src="/static/tools.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/';">Home</button></li>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/tools';">Tools</button></li>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/store';">Store</button></li>
+            </ul>
+        </nav>
+        <a href="/"><img class="altlogo" src="/static/images/awesomeg.png" alt="Awesome Logo"></a>
+        <div class="guidelink">
+            <a class="guides" href="/guides">
+            <img src="/static/images/guide.png" alt="Book Logo">Blog/ Articles/ Guides</a>
+        </div>
+    </header>
+    <main class="tools">
+        <div class="tool">
+            <section id="start">
+                <h2>Color Tool</h2>
+                <p>Select a color or upload a photo and use the dropper to select a color from that.
+            </section>
+            <section class="preview">
+                <div class="custom-file-upload">
+                    <input type="file" id="uploadImage" name="uploadImage" accept="image/*">
+                    <label for="uploadImage" id="customButton">Choose a file or drag and drop a picture
+                        file here</label>
+                </div><br>
+                <div id="uploadImagePreview"></div>
+            </section>
+            <section>
+                <div class="code">
+                    <label for="selectColor">Color Tool:&nbsp;</label>
+                    <input type="color" id="selectColor">
+                    <span id="colorCode"></span>
+                </div>
+            </section>
+            <section>
+                <canvas id="previewCanvas"></canvas>
+            </section>
+            <section class="save">
+                <p>Save a Color Sample with RGB Code:</p>
+                <button id="saveBtn">Save</button>
+            </section>
+        </div>
+        <div class="tool">
+            <h2>Volume Calculator</h2>
+            <form id="volForm">
+                <label for="height">Height:</label>
+                <input type="number" id="height" step="0.0001">
+                <br>
+                <label for="length">Length:</label>
+                <input type="number" id="length" step="0.0001">
+                <br>
+                <label for="width">Width:<br></label>
+                <input type="number" id="width" step="0.0001">
+                <br>
+                <button id="volBtn" type="submit">Calculate</button>
+            </form>
+            <div id="volresult"></div><br>
+            <h2>Compound Interest Calculator</h2>
+            <form id="ciForm">
+                <label for="invest">Investment:</label>
+                <input type="number" id="invest" step="0.01">
+                <br>
+                <label for="time">Time (years):<br></label>
+                <input type="number" id="time" step="0.01">
+                <br>
+                <label for="apr">APR:</label>
+                <input type="number" id="apr" step="0.01">
+                <br>
+                <button id="ciBtn" type="submit">Calculate</button>
+            </form>
+            <div id="ciresult"></div><br><br>
+        </div>
+        <div class="tool">
+            <h2>2D JS Breakout</h2>
+            <canvas id="bkCanvas" width="480" height="320"></canvas>
+            Ole
+        </div>
+    </main>
+    <div>
+        <span title="Questions? Give us a call! ">
+            <a class="help" href="tel:5095551111" onclick="gtag_report_conversion()">509 555 1111</a>
+        </span>
+    </div>
+    <footer>
+        &copy; Copyright 2023, Awesome Web Design &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/privacy">Privacy Policy </a>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+          $("button").css("border-radius", "{{ prct }}%");
+          $("input").css("border-radius", "{{ prct }}%");
+        });
+    </script>
+</body>
+</html>

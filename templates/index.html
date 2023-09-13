@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description"
+        content="Sample store page">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- Bootstrap for carousel -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <!-- Google tag (gtag.js) -->
+<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=GOOGLE_API"></script>-->
+<!--    <script>-->
+<!--        window.dataLayer = window.dataLayer || [];-->
+<!--        function gtag() { dataLayer.push(arguments); }-->
+<!--        gtag('js', new Date());-->
+<!--        gtag('config', 'GOOGLE_API');-->
+<!--        gtag('config', 'GOOGLE_ADS_TRACKING_API');-->
+<!--    </script>-->
+
+    <title>Sample Store Page | Landing Page</title>
+<!--    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">-->
+
+<!--    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">-->
+
+    <link type="text/css" charset="UTF-8" rel="stylesheet" href="/static/main.css">
+    <link type="text/css" charset="UTF-8" rel="stylesheet" href="/static/carousel.css">
+    <script src="/static/style.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/';">Home</button></li>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/tools';">Tools</button></li>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/store';">Store</button></li>
+            </ul>
+        </nav>
+        <a href="/"><img class="altlogo" src="/static/images/awesomeg.png" alt="Awesome Logo"></a>
+        <div class="guidelink">
+            <a class="guides" href="/guides">
+            <img src="/static/images/guide.png" alt="Book Logo">Blog/ Articles/ Guides</a>
+        </div>
+    </header>
+    <div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" aria-label="slide">
+            <div class="item active" role="option">
+                <div class="carousel-caption">
+                    <h3>Custom Sites, Designed to Your Specifications</h3>
+                    <p><a class="bannerlink" href="tel:5095551111" onclick="gtag_report_conversion()">
+                        Call today
+                    </a>for a free consultation.</p>
+                </div>
+            </div>
+            <div class="item" role="option">
+                <div class="carousel-caption">
+                    <h3>Do Something.</h3>
+                    <p>Visit Youtube:</p>
+                    <h3><a class="bannerlink" href="https://www.youtube.com" target="_blank">
+                            Youtube
+                        </a></h3>
+                </div>
+            </div>
+            <div class="item" role="option">
+                <div class="carousel-caption">
+                    <h3>Website Functionality</h3>
+                    <ul class="bannerlist">
+                        <li>Payment Processing</li>
+                        <li>Shopping Cart</li>
+                        <li>Informational Pages</li>
+                        <li>Custom Database</li>
+                        <li>Admin Interface</li>
+                    </ul>
+                    <p><a class="bannerlink" href="#contact">Contact</a> us for more information.</p>
+                </div>
+            </div>
+            <div class="item" role="option">
+                <div class="carousel-caption">
+                    <h3>See the <a class="bannerlink" href="/store">
+                    Store Page</a> for product display options.
+                    </h3>
+                    <ul class="bannerlist">
+                        <li>Single Item Purchases</li>
+                        <li>Shopping Cart Purchases</li>
+                        <li>Subscriptions</li>
+                        <li>Powered by Stripe</li>
+                    </ul>
+                    <p>Check back in to question your reality.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carouselFade" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carouselFade" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <div id="about">
+        <div class="text">
+            <h1>About Awesome Web Design</h1>
+             Our web design outfit specializes in creating custom websites that are tailored to meet the unique needs of our clients. We understand the importance of having a strong online presence, and we work closely with our clients to ensure that their website is not only visually appealing, but also functional and user-friendly.<br>
+             We are proud to offer integration with Stripe and Google Cloud, two of the most trusted and reliable platforms in the industry. With Stripe, our clients can easily accept payments and manage their online transactions, while Google Cloud provides a secure and scalable infrastructure for hosting their website.<br>
+             At our web design outfit, we are committed to delivering exceptional service and quality work. Our team of experienced designers and developers are dedicated to helping our clients achieve their online goals, and we are always striving to exceed their expectations. Contact us today to learn more about how we can help you create a custom website that is perfectly suited to your needs.<br>
+            <br> Hours: 9 am to 6 pm<br>
+            123 Road Dr<br>
+             City, State Zipcode
+        </div>
+        <div class="image">
+            <img class="aboutimg" src="/static/images/awesome.png" alt="About Awesome Web Design">
+        </div>
+    </div>
+    <div id="contact">
+        <br><br>
+        <p>Use the form below or call us at <a href="tel:5095551111"
+                onclick="gtag_report_conversion()">(509) 555-1111</a> for a free
+            website consultation!</p>
+        <h1>Contact Us</h1>
+        <form action="/send-email" method="POST" style="display:flex; flex-direction: column;">
+            <input type="hidden" name="form_id" value="contact">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <br>
+            <button class="mbutn" type="submit">Send</button>
+            <br><br>
+        </form>
+    </div>
+    <div id="gallery">
+        <div class="imgs">
+            <img src="/static/images/6.jpg" alt="6.jpg">
+            <img src="/static/images/7.jpg" alt="7.jpg">
+            <img src="/static/images/8.jpg" alt="8.jpg">
+            <img src="/static/images/9.jpg" alt="9.jpg">
+            <img src="/static/images/10.jpg" alt="10.jpg">
+            <img src="/static/images/11.jpg" alt="11.jpg">
+            <img src="/static/images/new1.jpg" alt="new1.jpg">
+            <img src="/static/images/slide5.jpg" alt="slide5.jpg">
+            <img src="/static/images/slide6.jpg" alt="slide6.jpg">
+        </div>
+        <br>
+        <div class="imgs">
+            <img src="/static/images/awesome.png" alt="awesome.png">
+            <img src="/static/images/awesome.png" alt="awesome.png">
+            <img src="/static/images/awesome.png" alt="awesome.png">
+            <img src="/static/images/awesome.png" alt="awesome.png">
+            <img src="/static/images/awesome.png" alt="awesome.png">
+            <img src="/static/images/awesome.png" alt="awesome.png">
+        </div>
+    </div>
+    <div>
+        <span title="Questions? Give us a call! ">
+            <a class="help" href="tel:5095551111" onclick="gtag_report_conversion()">509 555 1111</a>
+        </span>
+    </div>
+    <footer>
+        &copy; Copyright 2023, Awesome Web Design &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/privacy">Privacy Policy </a>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+          $("button").css("border-radius", "{{ prct }}%");
+        });
+    </script>
+</body>
+
+</html>
