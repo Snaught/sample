@@ -123,18 +123,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const col = getRandomColor();
     const col2 = getRandomColor();
     const col3 = getRandomColor();
+    const col4 = getRandomColor();
+    const col5 = getRandomColor();
 
-    let x = Math.floor(Math.random() * 460) + 10;
-    let y = Math.floor(Math.random() * 300) + 10;
-    let dx;
-    do {
-        dx = Math.floor(Math.random() * 7) - 3;
-    } while (dx === 0);
+    let x = Math.floor(Math.random() * (canvas.width - 10)) + 5;
+    let y = Math.floor(Math.random() * 310) + 5;
+    let dx = Math.floor(Math.random() * 9) - 4;
     let dy;
     do {
-        dy = Math.floor(Math.random() * 7) - 3;
+        dy = Math.floor(Math.random() * 9) - 4;
     } while (dy === 0);
-    const ballRadius = 10;
+    const ballRadius = 5;
 
     const paddleHeight = 10;
     const paddleWidth = 75;
@@ -143,15 +142,42 @@ document.addEventListener('DOMContentLoaded', function() {
     let leftPressed = false;
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
-    let deaths = 0;
+    document.addEventListener("mousemove", mouseMoveHandler, false);
 
-    const brickRowCount = 3;
-    const brickColumnCount = 5;
-    const brickWidth = 75;
-    const brickHeight = 20;
-    const brickPadding = 10;
-    const brickOffsetTop = 30;
-    const brickOffsetLeft = 30;
+    document.addEventListener("touchstart", touchStartHandler, false);
+    document.addEventListener("touchend", touchEndHandler, false);
+    document.addEventListener("touchmove", touchMoveHandler, false);
+
+    let deaths = 0;
+    let score = 0;
+    let level = 1;
+
+    function resize() {
+        // Resize the canvas to fill browser window dynamically
+        canvas.width = 400;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    if (canvas.width < 450) {
+        var brickRowCount = 6;
+        var brickColumnCount = 10;
+        var brickWidth = 31;
+        var brickHeight = 10;
+        var brickPadding = 8;
+        var brickOffsetTop = 30;
+        var brickOffsetLeft = 9;
+    } else {
+        var brickRowCount = 6;
+        var brickColumnCount = 10;
+        var brickWidth = 37;
+        var brickHeight = 10;
+        var brickPadding = 10;
+        var brickOffsetTop = 30;
+        var brickOffsetLeft = 10;
+    }
+
     var bricks = [];
     for (let c = 0; c < brickColumnCount; c++) {
       bricks[c] = [];
@@ -159,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
         bricks[c][r] = { x: 0, y: 0, status: 1 };
       }
     }
+    let allBricksHit = true;
 
     function keyDownHandler(e) {
       if (e.key === "Right" || e.key === "ArrowRight") {
@@ -176,11 +203,41 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
+    function mouseMoveHandler(e) {
+      const relativeX = e.clientX - canvas.offsetLeft;
+      if (relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth / 2;
+      }
+    }
+
+    function touchStartHandler(e) {
+        if (e.touches[0].clientX < canvas.width/2) {
+            leftPressed = true;
+        } else if (e.touches[0].clientX > canvas.width/2) {
+            rightPressed = true;
+        }
+    }
+
+    function touchEndHandler(e) {
+        leftPressed = false;
+        rightPressed = false;
+    }
+
+    function touchMoveHandler(e) {
+        const relativeX = e.touches[0].clientX - canvas.offsetLeft;
+        if (relativeX > 0 && relativeX < canvas.width) {
+            paddleX = relativeX - paddleWidth / 2;
+        }
+    }
+
     function drawBall() {
       ctx.beginPath();
       ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
       ctx.fillStyle = col;
       ctx.fill();
+      ctx.strokeStyle = col5; // Set the color of the border
+      ctx.lineWidth = 1; // Set the width of the border
+      ctx.stroke();
       ctx.closePath();
     }
 
@@ -218,10 +275,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                     dy = -dy;
                     b.status = 0;
+                    score++;
                 }
             }
         }
       }
+    }
+
+    function drawScore() {
+      ctx.font = "16px Arial";
+      ctx.fillStyle = col4;
+      ctx.fillText(`Score: ${score}`, 8, 20);
+      ctx.fillText(`Deaths: ${deaths}`, 150, 20);
+      ctx.fillText(`dy/dx: ${dy}/${dx}`, 300, 20);
     }
 
     function draw() {
@@ -230,6 +296,28 @@ document.addEventListener('DOMContentLoaded', function() {
         drawPaddle();
         drawBricks();
         collisionDetection();
+        drawScore();
+
+
+        allBricksHit = true;
+        for (let c = 0; c < brickColumnCount; c++) {
+            for (let r = 0; r < brickRowCount; r++) {
+                if (bricks[c][r].status === 1) {
+                    allBricksHit = false;
+                    break;
+                }
+            }
+            if (!allBricksHit) {
+                break;
+            }
+        }
+
+        if (allBricksHit) {
+            alrt = `LEVEL ${level} CLEARED`
+            level++;
+            alert(alrt);
+            resetBlocks();
+        }
 
         if (x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
             dx = -dx
@@ -239,15 +327,26 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (y + dy > canvas.height-ballRadius) {
             if(x > paddleX && x < paddleX + paddleWidth) {
                 dy = -dy;
+                if (x > paddleX && x <= paddleX + 5) {
+                    dx = dx - 2;
+                } else if  (x > paddleX + 5 && x <= paddleX + 25) {
+                    dx--;
+                } else if (x > paddleX + 50 && x <= paddleX + 70) {
+                    dx++;
+                } else if (x > paddleX + 70 && x <= paddleX + 75) {
+                    dx = dx + 2;
+                }
             } else {
-                deaths += 1;
-                if (deaths >= 5) {
-                    alert("GAME OVER");
+                deaths++;
+                if (dx > 4 || dx < -4) {
+                    dx = Math.floor(Math.random() * 9) - 4;
+                }
+                if (deaths >= 10) {
+                    alert("YOU DIED TOO MANY TIMES!");
                     clearInterval(interval);
                     resetGame();
                 } else {
                     dy = -dy;
-                    console.log(deaths)
                 }
             }
         }
@@ -264,18 +363,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var interval = setInterval(draw, 10);
 
     function resetGame() {
-        x = Math.floor(Math.random() * 460) + 10;
-        y = Math.floor(Math.random() * 300) + 10;
+        let x = Math.floor(Math.random() * (canvas.width - 10)) + 5;
+        y = Math.floor(Math.random() * 310) + 5;
+        dx = Math.floor(Math.random() * 9) - 4;
+        dy = Math.floor(Math.random() * 9) - 4;
         do {
-            dx = Math.floor(Math.random() * 7) - 3;
-        } while (dx === 0);
-        do {
-            dy = Math.floor(Math.random() * 7) - 3;
+            dy = Math.floor(Math.random() * 9) - 4;
         } while (dy === 0);
         paddleX = (canvas.width - paddleWidth) / 2;
-        rightPressed = false;
-        leftPressed = false;
         deaths = 0;
+        score = 0;
         for (let c = 0; c < brickColumnCount; c++) {
           bricks[c] = [];
           for (let r = 0; r < brickRowCount; r++) {
@@ -287,4 +384,19 @@ document.addEventListener('DOMContentLoaded', function() {
         interval = setInterval(draw, 10);
     }
 
+    function resetBlocks() {
+        for (let c = 0; c < brickColumnCount; c++) {
+          bricks[c] = [];
+          for (let r = 0; r < brickRowCount; r++) {
+            bricks[c][r] = { x: 0, y: 0, status: 1 };
+          }
+        }
+        let x = Math.floor(Math.random() * (canvas.width - 10)) + 5;
+        y = Math.floor(Math.random() * 310) + 5;
+        dx = Math.floor(Math.random() * 9) - 4;
+        dy = Math.floor(Math.random() * 9) - 4;
+        do {
+            dy = Math.floor(Math.random() * 9) - 4;
+        } while (dy === 0);
+    }
 });

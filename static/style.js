@@ -21,14 +21,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Select all button elements
     var buttons = document.querySelectorAll('button');
     var inputs = document.querySelectorAll('input');
+    var canvases = document.querySelectorAll('canvas');
     // Apply a random color to all button backgrounds
     var buttonColor = getRandomColor();
+    var buttonColor1 = getRandomColor();
+    var buttonColor2 = getRandomColor();
     buttons.forEach(function(button) {
         button.style.backgroundColor = buttonColor;
     });
     inputs.forEach(function(input) {
-        input.style.backgroundColor = buttonColor;
+        input.style.backgroundColor = buttonColor1;
     });
+    canvases.forEach(function(canvas) {
+        canvas.style.border = '1px solid ' + buttonColor2;
+    });
+
     
     function getRandomColor() {
         var letters = '0123456789ABCDEF';

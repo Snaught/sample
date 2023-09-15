@@ -22,28 +22,40 @@ def favicon():
 @app.route('/')
 def index():
     prct = getpercent()
-    response = make_response(render_template('index.html', prct=prct))
+    prct2 = getpercent()
+    response = make_response(render_template('index.html', prct=prct, prct2=prct2))
     return response
 
 
 @app.route('/tools')
 def tools():
     prct = getpercent()
-    response = make_response(render_template('tools.html', prct=prct))
+    prct2 = getpercent()
+    response = make_response(render_template('tools.html', prct=prct, prct2=prct2))
     return response
 
 
 @app.route('/store')
 def store():
     prct = getpercent()
-    response = make_response(render_template('store.html', prct=prct))
+    prct2 = getpercent()
+    response = make_response(render_template('store.html', prct=prct, prct2=prct2))
     return response
 
 
 @app.route('/guides')
 def guides():
     prct = getpercent()
-    response = make_response(render_template('guides.html', prct=prct))
+    prct2 = getpercent()
+    response = make_response(render_template('guides.html', prct=prct, prct2=prct2))
+    return response
+
+
+@app.route('/sent')
+def sent():
+    prct = getpercent()
+    prct2 = getpercent()
+    response = make_response(render_template('sent.html', prct=prct, prct2=prct2))
     return response
 
 

@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description"
+        content="Sample store page">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- Bootstrap for carousel -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <title>Sample Store Page | Sent Page</title>
+
+    <link type="text/css" charset="UTF-8" rel="stylesheet" href="/static/main.css">
+    <link type="text/css" charset="UTF-8" rel="stylesheet" href="/static/carousel.css">
+    <script src="/static/style.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/';">Home</button></li>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/tools';">Tools</button></li>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/store';">Store</button></li>
+            </ul>
+        </nav>
+        <a href="/"><img class="altlogo" src="/static/images/awesomeg.png" alt="Awesome Logo"></a>
+        <div class="guidelink">
+            <a class="guides" href="/guides">
+            <img src="/static/images/guide.png" alt="Book Logo">Blog/ Articles/ Guides</a>
+        </div>
+    </header>
+    <div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" aria-label="slide">
+            <div class="item active" role="option">
+                <div class="carousel-caption">
+                    <h3>Function Disabled</h3>
+                    <p>This site is currently coded to require a live <a class ="bannerlink" href="https://sendgrid.com/" target="_blank">SendGrid</a> account and API key.</p>
+                </div>
+            </div>
+            <div class="item" role="option">
+                <div class="carousel-caption">
+                    <h3>Custom Domain Names</h3>
+                    <p style ="color: white;">
+                        <a class ="bannerlink" href="https://sendgrid.com/" target="_blank">SendGrid</a>
+                        allows you to create alias email addresses using your domain name to send and receive emails,
+                        without creating an email server.
+                    </p>
+                </div>
+            </div>
+            <div class="item" role="option">
+                <div class="carousel-caption">
+                    <h3>SMTP</h3>
+                    <p>Other solutions, like smtplib, require username and login credentials from an existing email account.</p>
+                </div>
+            </div>
+            <div class="item" role="option">
+                <div class="carousel-caption">
+                    <h3>Other Solutions</h3>
+                    <ul class="bannerlist">
+                        <li>SMTP Servers: SendMail or other external servers</li>
+                        <li>APIs: AWS SES, Mailgun</li>
+                        <li>Python Libraries: email</li>
+                        <li>Microsoft Outlook</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carouselFade" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carouselFade" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <div>
+    <span title="Questions? Give us a call! ">
+        <a class="help" href="tel:5095551111" onclick="gtag_report_conversion()">509 555 1111</a>
+    </span>
+    </div>
+    <footer>
+        &copy; Copyright 2023, Awesome Web Design &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/privacy">Privacy Policy </a>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+          $("button").css("border-radius", "{{ prct }}%");
+        });
+    </script>
+</body>
+</html>

@@ -31,6 +31,7 @@
                 <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/';">Home</button></li>
                 <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/tools';">Tools</button></li>
                 <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/store';">Store</button></li>
+                <br><br>Don't like the colors? Reload the page!
             </ul>
         </nav>
         <a href="/"><img class="altlogo" src="/static/images/awesomeg.png" alt="Awesome Logo"></a>
@@ -99,9 +100,10 @@
             <div id="ciresult"></div><br><br>
         </div>
         <div class="tool">
-            <h2>2D JS Breakout</h2>
-            <canvas id="bkCanvas" width="480" height="320"></canvas>
-            Ole
+            <h2>Randomized 2D Breakout</h2>
+            <canvas id="bkCanvas" width="480" height="320" style="border:1px solid "></canvas>
+            If the ball hits the bottom, you get a death. <br>
+            Ten deaths and your game is over.
         </div>
     </main>
     <div>
@@ -117,7 +119,7 @@
     <script>
         $(document).ready(function(){
           $("button").css("border-radius", "{{ prct }}%");
-          $("input").css("border-radius", "{{ prct }}%");
+          $("input").css("border-radius", "{{ prct2 }}%");
         });
     </script>
 </body>

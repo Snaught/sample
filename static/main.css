@@ -23,7 +23,7 @@ div#uploadImagePreview {
 
 header {
     background-color: blue;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 20px;
@@ -160,6 +160,6 @@ ul.prv {
 
     .tools {
         display: flex;
-        flex-direction: right;
+        justify-content: space-around;
     }
 }
