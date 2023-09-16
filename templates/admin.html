@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description"
+        content="Sample store page">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- Bootstrap for carousel -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <title>Sample Store Page | Admin Page</title>
+
+    <link type="text/css" charset="UTF-8" rel="stylesheet" href="/static/main.css">
+    <link type="text/css" charset="UTF-8" rel="stylesheet" href="/static/carousel.css">
+    <script src="/static/style.js"></script>
+    <script src="/static/admin.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body id="admin">
+    <header>
+        <nav>
+            <ul>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/';">Home</button></li>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/tools';">Tools</button></li>
+                <li class="mainmenu"><button class="mmenu" onclick="window.location.href='/store';">Store</button></li>
+                <br><br>Don't like the colors? Reload the page!
+            </ul>
+        </nav>
+        <a href="/"><img class="altlogo" src="/static/images/awesomeg.png" alt="Awesome Logo"></a>
+        <div class="guidelink">
+            <a class="guides" href="/guides">
+            <img src="/static/images/guide.png" alt="Book Logo">Blog/ Articles/ Guides</a>
+        </div>
+    </header>
+    <main>
+        <button class="admin" type="button" id="sign-out" hidden="hidden">Sign Out</button>
+<!--        <div id="firebaseui-auth-container"></div>-->
+<!--        <div id="login"><h3>Please Sign In to continue.</h3></div>-->
+        Click to sign in (no credentials required)
+        <button class="admin" type="button" id="sign-in">Sign In</button>
+        <div id="tools" hidden="hidden">
+            <button class="admin" type="button" id="updateDB">Update from Stripe</button>
+            <div id="update-results"></div>
+            <br><p>Note: This will update the following main fields from the Stripe database:<br>
+            'default_price', 'description', 'images', 'metadata', 'name', 'price', 'unit_label'<br><br>
+            The following metadata fields are updated as well:
+            'dim', 'type', 'wgt', 'tint'<br><br>
+            If you make manual changes to the items above in the database, they will be overwritten by the Update from Stripe.
+            <br></p>
+            <form>
+                <label for="prodId">Product ID:</label>
+                <input type="text" id="prodId" name="prodId" accept="image/*" required>
+                <button class="admin" id="prodget" type="submit">Select</button>
+            </form>
+            <div id="prod-info"></div>
+        </div>
+    </main>
+    <div>
+        <span title="Questions? Give us a call! ">
+            <a class="help" href="tel:5095551111" onclick="gtag_report_conversion()">509 555 1111</a>
+        </span>
+    </div>
+    <footer>
+        &copy; Copyright 2023, Awesome Web Design &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/privacy">Privacy Policy </a>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+          $("button").css("border-radius", "{{ prct }}%");
+          $("input").css("border-radius", "{{ prct2 }}%");
+        });
+    </script>
+</body>
+</html>

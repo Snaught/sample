@@ -35,6 +35,14 @@ def tools():
     return response
 
 
+@app.route('/admin')
+def admin():
+    prct = getpercent()
+    prct2 = getpercent()
+    response = make_response(render_template('admin.html', prct=prct, prct2=prct2))
+    return response
+
+
 @app.route('/store')
 def store():
     prct = getpercent()

@@ -1,3 +1,11 @@
+body#admin {
+    background-image: url(/static/images/4.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    height: 60vw;
+}
+
 button {
     padding-bottom: 5px;
     padding-left: 20px;
@@ -19,6 +27,15 @@ div#contact, footer {
 
 div#uploadImagePreview {
     max-width: 100%;
+}
+
+footer {
+    background-color: white;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
 }
 
 header {
