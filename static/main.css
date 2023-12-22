@@ -114,6 +114,12 @@ ul.prv {
     top: 10%;
 }
 
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
 .text {
     padding-left: 1%;
     padding-right: 1%;

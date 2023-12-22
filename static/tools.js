@@ -140,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let paddleX = (canvas.width - paddleWidth) / 2;
     let rightPressed = false;
     let leftPressed = false;
+    var paused = false;
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
     document.addEventListener("mousemove", mouseMoveHandler, false);
@@ -147,6 +148,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener("touchstart", touchStartHandler, false);
     document.addEventListener("touchend", touchEndHandler, false);
     document.addEventListener("touchmove", touchMoveHandler, false);
+
+    document.addEventListener("click", function(event) {
+        if (!event.target.closest("canvas")) {
+            togglePause();
+        }
+    });
 
     let deaths = 0;
     let score = 0;
@@ -230,6 +237,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function togglePause() {
+        paused = !paused;
+    }
+
     function drawBall() {
       ctx.beginPath();
       ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
@@ -291,6 +302,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function draw() {
+        if (paused) {
+            return;
+        }
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawBall();
         drawPaddle();
