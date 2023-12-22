@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     var aElements = document.querySelectorAll('a');
-    // Apply a random color to all h1 elements
+    // Apply a random color to all 'a' elements
     var aColor = getRandomColor();
     aElements.forEach(function(element) {
         element.style.color = aColor;

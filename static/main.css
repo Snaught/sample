@@ -91,6 +91,15 @@ ul.prv {
     display: none;
 }
 
+.alien {
+    background-attachment: fixed;
+    background-image: url('/static/images/alien.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80%;
+}
+
 .guidelink {
     display: flex;
     font-size: 2.5vw;
@@ -120,10 +129,47 @@ ul.prv {
     margin: 10px;
 }
 
+.store {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+}
+
 .text {
     padding-left: 1%;
     padding-right: 1%;
     text-align: center;
+}
+
+.thought-bubble {
+    position: relative;
+    width: 200px;
+    text-align: center;
+    background-color: #fff;
+    border: 2px solid #666;
+    border-radius: 100px;
+    box-shadow: 2px 2px 4px #888;
+    left: 30px;
+}
+
+.thought-bubble:before, .thought-bubble:after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 163px;
+    top: 115px;
+    background-color: #fff;
+    border: 2px solid #666;
+    border-radius: 28px;
+}
+
+.thought-bubble:after {
+    width: 20px;
+    height: 20px;
+    left: 193px;
+    top: 138px;
+    border-radius: 18px;
 }
 
 .tool {
